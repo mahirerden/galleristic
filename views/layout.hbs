@@ -2,29 +2,35 @@
 <html>
   <head>
     <title>{{title}}</title>
+    <!-- Bootstrap Link -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.4.1/darkly/bootstrap.min.css">
+    {{!-- jquery link --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Fontawesome Link -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" />
+    <link href="https://fonts.googleapis.com/css?family=Coiny" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/burger_style.css" type="text/css" />
+    {{!-- local css --}}
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-
+<body class="bg-light">
+  <!-- Navi Section -->
+  <nav class="navbar navbar-dark bg-primary shadow">
+    <a class="navbar-brand" href="#" data-ol-has-click-handler="">
+      <h3>Welcome to Galleristic!!!</h3>
+    </a>
+  </nav>
 <div class="container">
 
 
 
     {{{body}}}
 
-<div class="row">
 
-<div class="col-md-4">
-</div>
 
-<div class="col-md-4">
-</div>
+</div>  
 
-<div class="col-md-4">
-</div>
 
-</div>
-
-</div>    
   </body>
 </html>
