@@ -8,8 +8,8 @@ var router = express.Router();
 
 /* GET artist page. */
 router.get('/', function(req, res, next) {
-  res.render("users", {
-    title1: "Users Section"
+  res.render("customer", {
+    title1: "Customer Section"
   
   });
 });

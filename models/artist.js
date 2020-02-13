@@ -20,6 +20,13 @@ module.exports = function(sequelize, DataTypes) {
       validate: {
         len: [1]
       }
+    },
+    islocal: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      validate: {
+        len: [1]
+      }
     }
   });
 
