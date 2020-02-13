@@ -31,10 +31,22 @@ module.exports = function(sequelize, DataTypes) {
     }
   });
 
+  // Associate with Artist
   Arts.associate = function(models) {
     // We're saying that a Arts should belong to an Artist
     // An Art can't be created without an Artist due to the foreign key constraint
     Arts.belongsTo(models.Artist, {
+      foreignKey: {
+        allowNull: false
+      }
+    });
+  };
+  
+  // Associate with Customer
+  Arts.associate = function(models) {
+    // We're saying that a Arts should belong to an Customer
+    // An Art can't be created without an Customer due to the foreign key constraint
+    Arts.belongsTo(models.Customer, {
       foreignKey: {
         allowNull: false
       }

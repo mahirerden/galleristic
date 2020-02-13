@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-  var User = sequelize.define("User", {
+  var Customer = sequelize.define("Customer", {
     username: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -21,6 +21,13 @@ module.exports = function(sequelize, DataTypes) {
     }
   });
 
+Customer.associate = function(models) {
+  // Associating Customer with Arts
+  // When an Customer is deleted, also delete any associated Arts
+  Customer.hasMany(models.Arts, {
+    onDelete: "cascade"
+  });
+};
 
-  return User;
+  return Customer;
 };
