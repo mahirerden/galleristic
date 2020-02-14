@@ -12,6 +12,8 @@ var customerRouter = require('./routes/customer');
 var artistRouter = require('./routes/artist');
 var artsRouter = require('./routes/arts');
 var aboutRouter = require('./routes/about');
+var loginRouter = require('./routes/login');
+var registerRouter = require('./routes/register');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -28,6 +30,8 @@ app.use("/customer", customerRouter);
 app.use('/artist', artistRouter);
 app.use('/arts', artsRouter);
 app.use('/about', aboutRouter);
+app.use('/login', loginRouter);
+app.use('/register', registerRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
