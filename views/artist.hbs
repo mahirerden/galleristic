@@ -1,23 +1,53 @@
 <p class="text-center mt-3">{{title1}}</p>
 <div class="row">
 
- <div class="col-md-3">
+ <div class="col-md-2">
   {{{title2}}}
  </div>
 
+<form>
+  <fieldset>
+    {{!-- <legend>Legend</legend> --}}
+    
+    <div class="form-group">
+      <label for="exampleInputEmail1">Email address</label>
+      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+        placeholder="Enter email">
+      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    </div>
+    {{!-- <div class="form-group">
+      <label for="exampleInputPassword1">Password</label>
+      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+    </div> --}}
+    <div class="form-group">
+      <label for="exampleSelect1">Select Arts Category</label>
+      <select class="form-control" id="exampleSelect1">
+        <option>Abstract</option>
+        <option>Modern</option>
+        <option>Street</option>
+        <option>Glass</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="priceInput">Price to Sell</label>
+      <input type="text" class="form-control" id="priceInput" aria-describedby="emailHelp"
+        placeholder="Enter your selling price">
+      <small id="emailHelp" class="form-text text-muted">We'll add Galleristic commision to sell price.</small>
+    </div>
+    <div class="form-group">
+      <label for="exampleTextarea">Comments</label>
+      <textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputFile">File input</label>
+      <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
+      <small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text for the above
+        input. It's a bit lighter and easily wraps to a new line.</small>
+    </div>
 
- <div class="col-md-6">
-   <div class="form-group">
-    <label for="exampleInputFile">File input</label>
-    <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
-    <small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text for the above input.
-     It's a bit lighter and easily wraps to a new line.</small>
-     <button type="button" class="btn btn-primary btn-sm">Submit button</button>
-   </div>
-   
- </div>
+</form>
 
-<div class="col-md-3">
+<div class="col-md-2">
 </div>
 {{!-- end of row --}}
 </div>
