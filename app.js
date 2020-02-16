@@ -33,12 +33,12 @@ app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true 
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use('/', indexRouter);
+app.use('/home', indexRouter);
 app.use("/customer", customerRouter);
 app.use('/artist', artistRouter);
 app.use('/arts', artsRouter);
 app.use('/about', aboutRouter);
-app.use('/login', require('./routes/login.js'));
+app.use('/', require('./routes/login.js'));
 app.use('/register', require('./routes/register.js'));
 app.use('/logout', require('./routes/logout.js'));
 
