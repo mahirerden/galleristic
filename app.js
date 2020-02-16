@@ -5,6 +5,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var passport = require("./config/passport");
+var hbs = require('hbs');
 
 // Setting up port and requiring models for syncing
 var PORT = process.env.PORT || 8080;
@@ -44,7 +45,7 @@ app.use('/logout', require('./routes/logout.js'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  next(createError(404));
+  //next(createError(404));
 });
 
 // error handler

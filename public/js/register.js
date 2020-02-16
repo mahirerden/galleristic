@@ -6,6 +6,11 @@ $(document).ready(function() {
   var register_password = $("#register_password");
   var register_password2 = $("#register_password2");
 
+  // $.get("/login/api/user_data").then(function(data) {
+  //   console.log(data);
+  //   $(".member-name").text(data.name);
+  // });
+
   // When the signup button is clicked, we validate the email and password are not blank
   register.on("submit", function(event) {
     event.preventDefault();
@@ -26,23 +31,19 @@ $(document).ready(function() {
     $("#register_password2").val("");
   });
 
-  // Does a post to the signup route. If successful, we are redirected to the members page
+    // Does a post to the signup route. If successful, we are redirected to the members page
   // Otherwise we log any errors
   function signUpUser(name, email, password) {
     $.post("/register/register", {
       name: name,
       email: email,
       password: password,
-    })
-      .then(function(data) {
-        res.render("login", {
-          title1: "Login Page"
-        });
-        //window.location.replace("/home");
+    }).then(function(data) {
+       location.assign("/login");
         // If there's an error, handle it by throwing up a bootstrap alert
       })
       .catch(handleLoginErr);
-  }
+  } 
 
   function handleLoginErr(err) {
     $("#alert .msg").text(err.responseJSON);
