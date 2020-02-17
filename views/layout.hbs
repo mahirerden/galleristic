@@ -19,6 +19,8 @@
   <script type="text/javascript" src="/js/register.js"></script>
   <script type="text/javascript" src="/js/login.js"></script>
   <script type="text/javascript" src="/js/logout.js"></script>
+  <script type="text/javascript" src="/js/artist_register.js"></script>
+  <script type="text/javascript" src="/js/artist_login.js"></script>
 </head>
 
 <body>
@@ -52,7 +54,7 @@
           <li class="nav-item dropdown">
             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Login</a>
             <div class="dropdown-menu">
-              <a href="#" class="dropdown-item">Artist Login</a>
+              <a href="/artist_login" class="dropdown-item">Artist Login</a>
               <a href="/login" class="dropdown-item">Customer Login</a>
               {{!-- <div class="dropdown-divider"></div>
               <a href="#" class="dropdown-item">Sample</a> --}}
@@ -61,7 +63,7 @@
           <li class="nav-item dropdown">
             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Register</a>
             <div class="dropdown-menu">
-              <a href="#" class="dropdown-item">Artist Register</a>
+              <a href="/artist_register" class="dropdown-item">Artist Register</a>
               <a href="/register" class="dropdown-item">Customer Register</a>
             </div>
           </li>
@@ -77,7 +79,7 @@
           <li class="nav-item">
             <a class="nav-link" href="/logout" data-ol-has-click-handler="">Logout</a>
           </li>
-          <li class="nav-item ml-auto">
+          <li class="nav-item">
             <a class="nav-link" href="#" data-ol-has-click-handler="">Sign in as: <span class="member_name"></span></a>
           </li>
         </ul>
