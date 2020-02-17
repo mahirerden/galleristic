@@ -42,6 +42,9 @@ app.use('/about', aboutRouter);
 app.use('/', require('./routes/login.js'));
 app.use('/register', require('./routes/register.js'));
 app.use('/logout', require('./routes/logout.js'));
+app.use('/artist_register', require('./routes/artist_register.js'));
+app.use('/artist_login', require('./routes/artist_login.js'));
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
