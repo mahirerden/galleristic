@@ -1,18 +1,17 @@
 var express = require('express');
 var router = express.Router();
-var passport = require("../config/passport");
+var passport_artist = require("../config/passport_artist");
 
 
-/* GET login page. */
+/* GET home page. */
 router.get('/', function(req, res, next) {
-  if (req.user) {
-    res.redirect("/arts");
-  }
-  res.render("login", {title1: "Login Page"});
-
+  res.render("artist_login", {
+    title1: "Login Page"
+  
+  });
 });
 
-router.post("/login", passport.authenticate("local"), function(req, res) {
+router.post("/artist_login", passport_artist.authenticate("local"), function(req, res) {
   res.json(req.user);
 });
 

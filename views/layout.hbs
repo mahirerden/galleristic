@@ -14,6 +14,13 @@
   <link rel='stylesheet' href='/stylesheets/style.css' />
   {{!-- local js file --}}
   {{!-- <script defer src="/javascripts/control.js"></script> --}}
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="/js/register.js"></script>
+  <script type="text/javascript" src="/js/login.js"></script>
+  <script type="text/javascript" src="/js/logout.js"></script>
+  <script type="text/javascript" src="/js/artist_register.js"></script>
+  <script type="text/javascript" src="/js/artist_login.js"></script>
 </head>
 
 <body>
@@ -23,16 +30,17 @@
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow">
       <a class="navbar-brand" href="/" data-ol-has-click-handler=""><img src="/images/logo02_tn.png" alt="logo"></a>
-
+      <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarColor01">
+        <span class="navbar-toggler-icon"></span>
+      </button>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01"
         aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-
       <div class="collapse navbar-collapse" id="navbarColor01">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="/" data-ol-has-click-handler="">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-link" href="/home" data-ol-has-click-handler="">Home <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/arts" data-ol-has-click-handler="">Arts</a>
@@ -43,14 +51,36 @@
           <li class="nav-item">
             <a class="nav-link" href="/customer" data-ol-has-click-handler="">Customer</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item dropdown">
+            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Login</a>
+            <div class="dropdown-menu">
+              <a href="/artist_login" class="dropdown-item">Artist Login</a>
+              <a href="/login" class="dropdown-item">Customer Login</a>
+              {{!-- <div class="dropdown-divider"></div>
+              <a href="#" class="dropdown-item">Sample</a> --}}
+            </div>
+          </li>
+          <li class="nav-item dropdown">
+            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Register</a>
+            <div class="dropdown-menu">
+              <a href="/artist_register" class="dropdown-item">Artist Register</a>
+              <a href="/register" class="dropdown-item">Customer Register</a>
+            </div>
+          </li>
+          {{!-- <li class="nav-item">
             <a class="nav-link" href="/login" data-ol-has-click-handler="">Login</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/register" data-ol-has-click-handler="">Register</a>
-          </li>
+          </li> --}}
           <li class="nav-item">
             <a class="nav-link" href="/about" data-ol-has-click-handler="">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/logout" data-ol-has-click-handler="">Logout</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" data-ol-has-click-handler="">Sign in as: <span class="member_name"></span></a>
           </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
