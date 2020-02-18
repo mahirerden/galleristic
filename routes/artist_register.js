@@ -1,7 +1,6 @@
 var express = require('express');
 var router = express.Router();
 var db = require("../models");
-var passport = require("../config/passport_artist");
 
 router.get('/', function (req, res, next) {
   res.render("artist_register", {

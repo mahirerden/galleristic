@@ -4,7 +4,7 @@ $(document).ready(function() {
   var email = $("input#login_email");
   var password = $("input#login_password");
 
-  $.get("/artist_login/api/user_data").then(function(data) {
+  $.get("/login/api/user_data").then(function(data) {
     $(".member_name").text(data.name);
   });
 
