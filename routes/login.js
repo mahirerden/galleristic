@@ -12,7 +12,7 @@ router.get('/', function(req, res, next) {
 
 });
 
-router.post("/login", passport.authenticate("local"), function(req, res) {
+router.post("/login", passport.authenticate("customer-local"), function(req, res) {
   res.json(req.user);
 });
 

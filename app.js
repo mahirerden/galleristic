@@ -6,6 +6,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var passport = require("./config/passport");
 var hbs = require('hbs');
+var flash = require('connect-flash');
 
 // Setting up port and requiring models for syncing
 var PORT = process.env.PORT || 8080;
@@ -30,21 +31,21 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(flash());
 app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true }));
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use('/home', indexRouter);
+app.use('/', indexRouter);
 app.use("/customer", customerRouter);
 app.use('/artist', artistRouter);
 app.use('/arts', artsRouter);
 app.use('/about', aboutRouter);
-app.use('/', require('./routes/login.js'));
+app.use('/login', require('./routes/login.js'));
 app.use('/register', require('./routes/register.js'));
 app.use('/logout', require('./routes/logout.js'));
 app.use('/artist_register', require('./routes/artist_register.js'));
 app.use('/artist_login', require('./routes/artist_login.js'));
-
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
