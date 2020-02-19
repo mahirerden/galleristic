@@ -1,6 +1,6 @@
 $(document).ready(function() {
   // Getting references to our form and input
-  var register = $("form.register");
+  var register = $("form.customer_register");
   var register_name = $("#register_name");
   var register_email = $("#register_email");
   var register_password = $("#register_password");

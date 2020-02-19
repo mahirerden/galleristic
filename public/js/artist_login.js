@@ -1,27 +1,27 @@
 $(document).ready(function() {
   // Getting references to our form and inputs
-  var loginForm = $("form.artist_login");
-  var email = $("input#login_email");
-  var password = $("input#login_password");
+  var artist_loginForm = $("form.artist_login");
+  var artist_email = $("input#artist_email");
+  var artist_password = $("input#artist_password");
 
   $.get("/login/api/user_data").then(function(data) {
     $(".member_name").text(data.name);
   });
 
   // When the form is submitted, we validate there's an email and password entered
-  loginForm.on("submit", function(event) {
+  artist_loginForm.on("submit", function(event) {
     event.preventDefault();
-    var userData = {
-      email: email.val().trim(),
-      password: password.val().trim()
+    var artistData = {
+      email: artist_email.val().trim(),
+      password: artist_password.val().trim()
     };
 
-    if (!userData.email || !userData.password) {
+    if (!artistData.email || !artistData.password) {
       return;
     }
 
     // If we have an email and password we run the loginUser function and clear the form
-    loginUser(userData.email, userData.password);
+    loginUser(artistData.email, artistData.password);
     email.val("");
     password.val("");
   });

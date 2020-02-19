@@ -1,22 +1,47 @@
-<div class="row mt-5">
-  <div class="col-md-6 m-auto">
-    <div class="card card-body">
-      <h1 class="text-center mb-3"><i class="fas fa-sign-in-alt"></i> Customer Login</h1>
-      {{!-- <form action="/api/login" method="POST"> --}}
-      <form class="login">
-        <div class="form-group">
-          <label for="email">Email</label>
-          <input type="email" id="login_email" name="email" class="form-control" placeholder="Enter Email" required>
-        </div>
-        <div class="form-group">
-          <label for="password">Password</label>
-          <input type="password" id="login_password" name="password" class="form-control" placeholder="Enter Password" required>
-        </div>
-        <button type="submit" class="btn btn-primary btn-block">Login</button>
-      </form>
-      <p class="lead mt-4">
-        No Account? <a href="/register">Register</a>
-      </p>
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-md-6 m-auto">
+      <div class="card card-body">
+        <h1 class="text-center mb-3"><i class="fas fa-sign-in-alt"></i> Customer Login</h1>
+        <form class="customer_login">
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="customer_email" name="email" class="form-control" placeholder="Enter Email" required>
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="customer_password" name="password" class="form-control" placeholder="Enter Password"
+              required>
+          </div>
+          <button type="submit" id="customer_button" class="btn btn-primary btn-block">Login</button>
+        </form>
+        <p class="lead mt-4">
+          No Account? <a href="/register">Register</a>
+        </p>
+      </div>
+    </div>
+    <div class="col-md-6 m-auto">
+      <div class="card card-body" style="background: url(../images/abstract01.jpeg) no-repeat top center fixed;">
+        <h1 class="text-center mb-3"><i class="fas fa-sign-in-alt"></i> Artist Login</h1>
+        {{#if (messages.error)}}
+        {{messages.error}}
+        {{/if}}
+        <form class="artist_login">
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="artist_email" name="email" class="form-control" placeholder="Enter Email" required>
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="artist_password" name="password" class="form-control" placeholder="Enter Password"
+              required>
+          </div>
+          <button type="submit" id="artist_button" class="btn btn-primary btn-block">Login</button>
+        </form>
+        <p class="lead mt-4">
+          No Account? <a href="/register">Register</a>
+        </p>
+      </div>
     </div>
   </div>
 </div>
