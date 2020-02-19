@@ -1,27 +1,27 @@
 $(document).ready(function() {
   // Getting references to our form and inputs
-  var loginForm = $("form.login");
-  var email = $("input#login_email");
-  var password = $("input#login_password");
+  var customer_loginForm = $("form.customer_login");
+  var customer_email = $("input#customer_email");
+  var customer_password = $("input#customer_password");
 
   $.get("/login/api/user_data").then(function(data) {
     $(".member_name").text(data.name);
   });
 
   // When the form is submitted, we validate there's an email and password entered
-  loginForm.on("submit", function(event) {
+  customer_loginForm.on("submit", function(event) {
     event.preventDefault();
-    var userData = {
-      email: email.val().trim(),
-      password: password.val().trim()
+    var customerData = {
+      email: customer_email.val().trim(),
+      password: customer_password.val().trim()
     };
 
-    if (!userData.email || !userData.password) {
+    if (!customerData.email || !customerData.password) {
       return;
     }
 
     // If we have an email and password we run the loginUser function and clear the form
-    loginUser(userData.email, userData.password);
+    loginUser(customerData.email, customerData.password);
     email.val("");
     password.val("");
   });

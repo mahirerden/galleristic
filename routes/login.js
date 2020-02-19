@@ -6,7 +6,7 @@ var passport = require("../config/passport");
 /* GET login page. */
 router.get('/', function(req, res, next) {
   if (req.user) {
-    res.redirect("/arts");
+    res.redirect("/");
   }
   res.render("login", {title1: "Login Page"});
 

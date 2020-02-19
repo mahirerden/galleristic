@@ -1,23 +1,23 @@
 var categoryArray = [
   {
     "id": 1,
-    "category": "Painting"
+    "name": "Painting"
   },
   {
     "id": 2,
-    "category": "Drawing"
+    "name": "Drawing"
   },
   {
     "id": 3,
-    "category": "Sculpture"
+    "name": "Sculpture"
   },
   {
     "id": 4,
-    "category": "Photography"
+    "name": "Photography"
   },
   {
     "id": 5,
-    "category": "Ceramic"
+    "name": "Ceramic"
   }
 ];
 

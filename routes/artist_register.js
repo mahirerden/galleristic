@@ -17,7 +17,7 @@ router.post('/artist_register', (req, res) => {
     islocal: 1
   })
     .then(function () {
-      res.render("artist_login", {
+      res.render("login", {
         title1: "Login Page"
       });
     })
