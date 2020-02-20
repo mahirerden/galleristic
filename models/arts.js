@@ -7,11 +7,6 @@ module.exports = function(sequelize, DataTypes) {
         len: [1]
       }
     },
-    category: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      len: [1]
-    },
     year: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -36,6 +31,12 @@ module.exports = function(sequelize, DataTypes) {
     // We're saying that a Arts should belong to an Artist
     // An Art can't be created without an Artist due to the foreign key constraint
     Arts.belongsTo(models.Artist, {
+      foreignKey: {
+        allowNull: false
+      }
+    });
+    
+    Arts.belongsTo(models.Category, {
       foreignKey: {
         allowNull: false
       }
