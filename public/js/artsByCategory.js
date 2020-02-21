@@ -4,32 +4,37 @@ $(document).ready(function () {
   var arts_container = $(".arts_container");
   var categoryName;
   var arts;
-  runTableQuery();
+  getCategories();
 
-  function runTableQuery() {
-    $.ajax({ url: "/artsbycategory/category", method: "GET" })
-      .then(function(data) {
-        var rowsToAdd = [];
-        for (var i = 0; i < data.length; i++) {
-          rowsToAdd.push(createCategoryRow(data[i]));
-        }
-        categorySelect.empty();
-        categorySelect.append(rowsToAdd);
-        categorySelect.val(data.id);
-      });
+  function getCategories(){
+    $.get("/apis/category", renderAuthorList);
   }
 
-  function createCategoryRow(category) {
+  function renderAuthorList(data) {
+    var rowsToAdd = [];
+    for (var i = 0; i < data.length; i++) {
+      rowsToAdd.push(createAuthorRow(data[i]));
+    }
+    categorySelect.empty();
+    console.log(rowsToAdd);
+    console.log(categorySelect);
+    categorySelect.append(rowsToAdd);
+    categorySelect.val(id);
+  }
+
+  // Creates the author options in the dropdown
+  function createAuthorRow(author) {
     var listOption = $("<option>");
-    listOption.attr("value", category.id);
-    listOption.text(category.name);
+    listOption.attr("value", author.id);
+    listOption.text(author.name);
     return listOption;
   }
+
 
   $(artsbycategoryForm).on("submit", getArts());
 
   function getArts() {
-    categoryName = $("#category option:selected").text();
+    categoryName = categorySelect.  $("#category option:selected").text();
     console.log(categoryName);
     if (categoryName) {
       categoryName = "/?category=" + categoryName;

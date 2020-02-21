@@ -18,10 +18,8 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
   <script type="text/javascript" src="/js/register.js"></script>
   <script type="text/javascript" src="/js/login.js"></script>
-  <script type="text/javascript" src="/js/logout.js"></script>
-  <script type="text/javascript" src="/js/artist_register.js"></script>
   <script type="text/javascript" src="/js/artist_login.js"></script>
-  <script type="text/javascript" src="/js/artsbycategory.js"></script>
+  {{!-- <script type="text/javascript" src="/js/artsbycategory.js"></script> --}}
 </head>
 
 <body>
@@ -43,8 +41,14 @@
           <li class="nav-item active">
             <a class="nav-link" href="/" data-ol-has-click-handler="">Home <span class="sr-only">(current)</span></a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/arts" data-ol-has-click-handler="">Arts</a>
+          <li class="nav-item dropdown">
+            <a href="#" class="nav-link dropdown-toggle nav_artworks" data-toggle="dropdown">ArtWorks</a>
+            <div class="dropdown-menu">
+              <a href="/artsbycategory" class="dropdown-item">Artworks by Category</a>
+              <a href="#/artsbyartist" class="dropdown-item">Artworks by Artists</a>
+              <div class="dropdown-divider"></div>
+              <a href="/arts" class="dropdown-item">Arts</a>
+            </div>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/artist" data-ol-has-click-handler="">Artist</a>
@@ -58,27 +62,10 @@
            <li class="nav-item">
             <a class="nav-link" href="/register" data-ol-has-click-handler="">Register</a>
           </li>
-          {{!-- <li class="nav-item dropdown">
-            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Login</a>
-            <div class="dropdown-menu">
-              <a href="/artist_login" class="dropdown-item">Artist Login</a>
-              <a href="/login" class="dropdown-item">Customer Login</a>
-            </div>
-          </li>
-          <li class="nav-item dropdown">
-            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Register</a>
-            <div class="dropdown-menu">
-              <a href="/artist_register" class="dropdown-item">Artist Register</a>
-              <a href="/register" class="dropdown-item">Customer Register</a>
-            </div>
-          </li> --}}
           <li class="nav-item">
             <a class="nav-link" href="/about" data-ol-has-click-handler="">About</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/artsbycategory" data-ol-has-click-handler="">Arts by Category</a>
-          </li>
-          <li class="nav-item">
+           <li class="nav-item">
             <a class="nav-link" href="/logout" data-ol-has-click-handler="">Logout</a>
           </li>
           <li class="nav-item">
@@ -91,23 +78,12 @@
         </form>
       </div>
     </nav>
-
-
-
     <div class="container">
-
-
 
       {{{body}}}
 
-
-
     </div>
-
-
   </body>
-
 </html>
 
-              {{!-- <div class="dropdown-divider"></div>
-              <a href="#" class="dropdown-item">Sample</a> --}}
+              
