@@ -1,8 +1,39 @@
 var express = require('express');
 var router = express.Router();
+var isAuthenticated = require("../config/isAuthenticated");
+
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
+  res.render("index", {
+    title1: "Home Page",
+    logo01: `<img class="thumbnail shadow" src='/images/logo02.png' onclick='this.src="/images/logo02.png"'/>`
+  });
+});
+
+/* GET about page. */
+router.get('/about', (req, res) => {
+  res.render("about", {
+    title1: "About Page"
+  });
+});
+
+/* GET customer page. */
+router.get('/customer', isAuthenticated, (req, res) => {
+  res.render("customer", {
+    title1: "Customer Page"
+  });
+});
+
+/* GET artist page. */
+router.get('/artist', isAuthenticated, (req, res) => {
+  res.render("artist", {
+    title1: "Artist Submission Page"
+  });
+});
+
+/* GET arts page. */
+router.get('/arts', isAuthenticated, (req, res) => {
   res.render("arts", {
     title1: "Abstract Art Section",
     abs01: `<img class="thumbnail shadow" src='/images/abstract01_tn.jpeg' onclick='this.src="/images/abstract01.jpeg"'/>`,
@@ -22,5 +53,36 @@ router.get('/', function(req, res, next) {
     gla03: `<img class="thumbnail shadow" src='/images/glass03_tn.jpeg' onclick='this.src="/images/glass03.jpeg"'/>`
   });
 });
+
+/* GET artsbycategory page. */
+router.get('/artsbycategory', isAuthenticated, (req, res) => {
+  res.render("artsbycategory", {
+    title1: "Arts By Category"
+  });
+});
+
+/* GET login page. */
+router.get('/login', function(req, res, next) {
+  // if (req.user) {
+  //   res.redirect("/");
+  // }
+  res.render("login", {
+    title1: "Login Page"
+  });
+});
+
+/* GET register page. */
+router.get('/register', function (req, res, next) {
+  res.render("register", {
+    title1: "Register Page"
+  });
+});
+
+/* Logout */
+router.get("/logout", function (req, res) {
+  req.logout();
+  res.redirect("login");
+});
+
 
 module.exports = router;

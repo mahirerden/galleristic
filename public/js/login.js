@@ -4,7 +4,7 @@ $(document).ready(function() {
   var customer_email = $("input#customer_email");
   var customer_password = $("input#customer_password");
 
-  $.get("/login/api/user_data").then(function(data) {
+  $.get("/apis/api/user_data").then(function(data) {
     $(".member_name").text(data.name);
   });
 
@@ -21,23 +21,27 @@ $(document).ready(function() {
     }
 
     // If we have an email and password we run the loginUser function and clear the form
-    loginUser(customerData.email, customerData.password);
-    email.val("");
-    password.val("");
+    customer_loginUser(customerData.email, customerData.password);
+    customer_email.val("");
+    customer_password.val("");
   });
 
   // loginUser does a post to our "api/login" route and if successful, redirects us the the members page
-  function loginUser(email, password) {
-    $.post("/login/login", {
+  function customer_loginUser(email, password) {
+    console.log(email + " " +password);
+    $.post("/users/customer_login", {
       email: email,
       password: password
     }).then(function() {
+      console.log("then");
         location.assign("/");
-        //window.location.replace("/");
+        // location.assign("/");
         // If there's an error, log the error
+        //--------------------------
       })
       .catch(function(err) {
         console.log(err);
       });
   }
+
 });
