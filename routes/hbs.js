@@ -57,8 +57,9 @@ router.get("/arts", isAuthenticated, (req, res) => {
   });
 });
 
-/* GET artsbycategory page. */
-router.get("/artsbycategory", isAuthenticated, (req, res) => {
+
+router.get('/artsbycategory', (req, res) => {
+  
   res.render("artsbycategory", {
     title1: "Arts By Category"
   });
