@@ -17,44 +17,55 @@ router.get("/api/user_data", function(req, res) {
   }
 });
 
-router.get("/category", (req, res) => {
-  res.json(category);
+router.get("/api/category", (req, res) => {
+  db.Category.findAll({
+  }).then(function(dbCategory) {
+    res.json(dbCategory);
+  });
 });
 
-// 1 foreign key
-// router.get("/api/artsbycategory", function(req, res) {
-//   var query = {};
-//   if (req.query.category) {
-//     query.Category = req.query.category;
-//   }
-//   db.Arts.findAll({
-//     where: query,
-//     include: [db.Artist]
-//   }).then(function(dbArts) {
-//     res.json(dbArts);
-//   });
-// });
+router.get("/api/artsbycategory", (req, res) => {
+  var query = {};
+  if (req.query.categoryid) {
+    query.categoryid = req.query.categoryid;
+  }
+  console.log('req.query = ' + JSON.stringify(req.query));
+  db.Arts.findAll({
+    where: query,
+    include: [
+            {
+              model: db.Artist
+            },
+            {
+              model: db.Category
+            }
+        ]
+  }).then(function(dbArts) {
+    res.json(dbArts);
+  });
+});
 
-// 2 foreign keys
-// router.get("/api/artsbycategory", (req, res) => {
-//   var query = {};
-//   if (req.query.category) {
-//     query.Category = req.query.category;
-//   }
-//   db.Arts.findAll({
-//     where: query,
-//     include: [
-//       {
-//         model: db.Artist
-//       },
-//       {
-//         model: db.Category
-//       }
-//   ]
-//   }).then(function(dbArts) {
-//     res.json(dbArts);
-//   });
-// });
-
+router.get("/api/artsbycategory/:id", (req, res) => {
+  var query = {};
+  console.log(JSON.stringify(req.query));
+  if (req.query.id) {
+    query.id = req.query.id;
+  }
+  db.Arts.findAll({
+    where: {
+      categoryid: req.params.id
+    },
+    include: [
+      {
+        model: db.Artist
+      },
+      {
+        model: db.Category
+      }
+  ]
+  }).then(function(dbArts) {
+    res.json(dbArts);
+  });
+});
 
 module.exports = router;
