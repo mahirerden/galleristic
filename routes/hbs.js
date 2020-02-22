@@ -1,10 +1,10 @@
-var express = require('express');
+var express = require("express");
 var router = express.Router();
+var db = require("../models");
 var isAuthenticated = require("../config/isAuthenticated");
 
-
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get("/", function(req, res, next) {
   res.render("index", {
     title1: "Home Page",
     logo01: `<img class="thumbnail shadow" src='/images/logo02.png' onclick='this.src="/images/logo02.png"'/>`
@@ -12,28 +12,31 @@ router.get('/', function(req, res, next) {
 });
 
 /* GET about page. */
-router.get('/about', (req, res) => {
+router.get("/about", (req, res) => {
   res.render("about", {
     title1: "About Page"
   });
 });
 
 /* GET customer page. */
-router.get('/customer', isAuthenticated, (req, res) => {
+router.get("/customer", isAuthenticated, (req, res) => {
   res.render("customer", {
     title1: "Customer Page"
   });
 });
 
 /* GET artist page. */
-router.get('/artist', isAuthenticated, (req, res) => {
-  res.render("artist", {
-    title1: "Artist Submission Page"
+router.get("/artist", isAuthenticated, (req, res) => {
+  db.Category.findAll({ attributes: ["name"] }).then(function(dbCategory) {
+    res.render("artist", {
+      title1: "Artist Submission Page",
+      categories: dbCategory
+    });
   });
 });
 
 /* GET arts page. */
-router.get('/arts', isAuthenticated, (req, res) => {
+router.get("/arts", isAuthenticated, (req, res) => {
   res.render("arts", {
     title1: "Abstract Art Section",
     abs01: `<img class="thumbnail shadow" src='/images/abstract01_tn.jpeg' onclick='this.src="/images/abstract01.jpeg"'/>`,
@@ -54,15 +57,16 @@ router.get('/arts', isAuthenticated, (req, res) => {
   });
 });
 
-/* GET artsbycategory page. */
+
 router.get('/artsbycategory', (req, res) => {
+  
   res.render("artsbycategory", {
     title1: "Arts By Category"
   });
 });
 
 /* GET login page. */
-router.get('/login', function(req, res, next) {
+router.get("/login", function(req, res, next) {
   // if (req.user) {
   //   res.redirect("/");
   // }
@@ -72,17 +76,16 @@ router.get('/login', function(req, res, next) {
 });
 
 /* GET register page. */
-router.get('/register', function (req, res, next) {
+router.get("/register", function(req, res, next) {
   res.render("register", {
     title1: "Register Page"
   });
 });
 
 /* Logout */
-router.get("/logout", function (req, res) {
+router.get("/logout", function(req, res) {
   req.logout();
   res.redirect("login");
 });
-
 
 module.exports = router;

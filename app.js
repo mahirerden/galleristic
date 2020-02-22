@@ -12,7 +12,6 @@ var multer = require("multer");
 var path = require("path");
 
 
-
 // Setting up port and requiring models for syncing
 var PORT = process.env.PORT || 8080;
 var db = require("./models");
@@ -70,7 +69,9 @@ app.post("/artist", (req, res) => {
       } else {
         res.render("artist", {
           msg: "File Uploaded!",
-          file: `uploads/${req.file.filename}`
+          file: `uploads/${req.file.filename}`,
+          atitle: req.body.title,
+          aprice: req.body.price,
         });
       }
     }

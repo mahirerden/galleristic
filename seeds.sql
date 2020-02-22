@@ -1,5 +1,20 @@
 USE galleristic;
-INSERT INTO arts (title, category, year, thumbnail, image, createdAt, updatedAt, artistid, customerid) 
+
+-- inerting into category table
+INSERT INTO Categories
+  (name, createdAt, updatedAt)
+VALUES
+  ('Abstract', NOW(), NOW()),
+  ('Contemporary', NOW(), NOW()),
+  ('Classic', NOW(), NOW()),
+  ('Street', NOW(), NOW()),
+  ('Glass', NOW(), NOW()),
+  ('Photography', NOW(), NOW());
+
+
+
+  -- insert into arts table
+  INSERT INTO arts (title, category, year, thumbnail, image, createdAt, updatedAt, artistid, customerid) 
   VALUES ('abstract01_tn', 'painting', 2003, '', '/images/abstract01_tn.jpeg', '2020-02-19', '2020-02-19' 1, 2);
 
 INSERT INTO arts (title, category, year, thumbnail, image, createdAt, updatedAt, artistid, customerid) 
