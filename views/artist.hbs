@@ -1,53 +1,76 @@
 <p class="text-center mt-3">{{title1}}</p>
+
+
+
 <div class="row">
 
- <div class="col-md-2">
-  {{{title2}}}
- </div>
+  <div class="col-md-12">
+    {{{msg}}}
+  </div>
 
-<form>
-  <fieldset>
-    {{!-- <legend>Legend</legend> --}}
-    
-    <div class="form-group">
-      <label for="exampleInputEmail1">Email address</label>
-      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-        placeholder="Enter email">
-      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-    </div>
-    {{!-- <div class="form-group">
-      <label for="exampleInputPassword1">Password</label>
-      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-    </div> --}}
-    <div class="form-group">
-      <label for="exampleSelect1">Select Arts Category</label>
-      <select class="form-control" id="exampleSelect1">
-        <option>Abstract</option>
-        <option>Modern</option>
-        <option>Street</option>
-        <option>Glass</option>
-      </select>
-    </div>
-    <div class="form-group">
-      <label for="priceInput">Price to Sell</label>
-      <input type="text" class="form-control" id="priceInput" aria-describedby="emailHelp"
-        placeholder="Enter your selling price">
-      <small id="emailHelp" class="form-text text-muted">We'll add Galleristic commision to sell price.</small>
-    </div>
-    <div class="form-group">
-      <label for="exampleTextarea">Comments</label>
-      <textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
-    </div>
-    <div class="form-group">
-      <label for="exampleInputFile">File input</label>
-      <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
-      <small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text for the above
-        input. It's a bit lighter and easily wraps to a new line.</small>
-    </div>
 
-</form>
+  <div class="col-md-12">
+    <h1>Art Details</h1>
+    <form action="/artist" method="POST" enctype="multipart/form-data">
 
-<div class="col-md-2">
+      <div class="form-group">
+        <label for="title">Art Title</label>
+        <input type="text" class="form-control" id="title" aria-describedby="title" placeholder="Enter Art Title">
+      </div>
+
+      <div class="form-group">
+        <label for="price">Art Price</label>
+        <input type="text" class="form-control" id="price" aria-describedby="price" placeholder="Enter Art Price">
+      </div>
+
+      <div class="form-group">
+        <label for="year">Year</label>
+        <input type="text" class="form-control" id="year" aria-describedby="year" placeholder="Enter Year">
+      </div>
+
+      <div class="form-group">
+        <label for="exampleTextarea">Comments</label>
+        <textarea class="form-control" id="exampleTextarea" rows="1"></textarea>
+      </div>
+
+      <div class="file-field input-field">
+        <div class="btn grey">
+          <span>File</span>
+          <input name="artistFile" type="file">
+        </div>
+        {{!-- <div class="file-path-wrapper">
+        <input class="file-path validate" type="text">
+      </div> --}}
+      </div>
+      <br>
+      <button type="submit" class="btn btn-primary">Submit</button>
+      <br>
+      <br>
+    </form>
+  </div>
+
+  <div class="col-md-12">
+
+  </div>
+  {{!-- end of row --}}
 </div>
-{{!-- end of row --}}
+
+
+
+
+<div class="row">
+  <div class="col-md-3"></div>
+
+  <div class="col-md-6">
+
+    <img src="{{file}}" style="width:600px;height:300px;">
+
+  </div>
+
+  <div class="col-md-3">
+
+    <p></p>
+
+  </div>
+  {{!-- end of row --}}
 </div>

@@ -7,6 +7,11 @@ var logger = require('morgan');
 var passport = require("./config/passport");
 var hbs = require('hbs');
 var flash = require('connect-flash');
+var helmet = require("helmet");
+var multer = require("multer");
+var path = require("path");
+
+
 
 // Setting up port and requiring models for syncing
 var PORT = process.env.PORT || 8080;
@@ -14,6 +19,64 @@ var db = require("./models");
 
 // middleware
 var app = express();
+app.use(helmet());
+
+// Multer section
+var storage = multer.diskStorage({
+  destination: function(req, file, cb) {
+    cb(null, "./public/uploads");
+  },
+  filename: function(req, file, cb) {
+    cb(null, file.fieldname + "-" + Date.now() + path.extname(file.originalname));
+  }
+});
+
+const upload = multer({
+  storage: storage,
+  limits: { fileSize: 1000000 },
+  fileFilter: function(req, file, cb) {
+    checkFileType(file, cb);
+  }
+}).single("artistFile");
+
+// Check File Type
+function checkFileType(file, cb){
+  // Allowed ext
+  const filetypes = /jpeg|jpg|png|gif/;
+  // Check ext
+  const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
+  // Check mime
+  const mimetype = filetypes.test(file.mimetype);
+
+  if(mimetype && extname){
+    return cb(null,true);
+  } else {
+    cb('Error: Images Only!');
+  }
+}
+
+/* PUT for File upload */
+app.post("/artist", (req, res) => {
+  upload(req, res, err => {
+    if (err) {
+      res.render("artist", {
+        msg: err
+      });
+    } else {
+      if (req.file == undefined) {
+        res.render("artist", {
+          msg: "Error: No File Selected!"
+        });
+      } else {
+        res.render("artist", {
+          msg: "File Uploaded!",
+          file: `uploads/${req.file.filename}`
+        });
+      }
+    }
+  });
+});
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
