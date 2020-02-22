@@ -1,15 +1,18 @@
-$(document).ready(function() {
+$(document).ready(function () {
   // Getting references to our form and inputs
   var customer_loginForm = $("form.customer_login");
   var customer_email = $("input#customer_email");
   var customer_password = $("input#customer_password");
 
-  $.get("/apis/api/user_data").then(function(data) {
+  sessionStorage.setItem("user", "");
+  changeMenu();
+
+  $.get("/apis/api/user_data").then(function (data) {
     $(".member_name").text(data.name);
   });
 
   // When the form is submitted, we validate there's an email and password entered
-  customer_loginForm.on("submit", function(event) {
+  customer_loginForm.on("submit", function (event) {
     event.preventDefault();
     var customerData = {
       email: customer_email.val().trim(),
@@ -28,20 +31,54 @@ $(document).ready(function() {
 
   // loginUser does a post to our "api/login" route and if successful, redirects us the the members page
   function customer_loginUser(email, password) {
-    console.log(email + " " +password);
+    console.log(email + " " + password);
     $.post("/users/customer_login", {
       email: email,
       password: password
-    }).then(function() {
-      console.log("then");
-        location.assign("/");
-        // location.assign("/");
-        // If there's an error, log the error
-        //--------------------------
-      })
-      .catch(function(err) {
+    }).then(function () {
+      sessionStorage.setItem("user", "customer");
+      changeMenu();
+      location.assign("/");
+      
+      // location.assign("/");
+      // If there's an error, log the error
+      //--------------------------
+    })
+      .catch(function (err) {
         console.log(err);
       });
+  }
+
+  function changeMenu() {
+    var user = sessionStorage.getItem("user");
+    if (user === "") {
+      //Before Login
+      $('.nav_artworks').css('display', 'none');
+      $('.nav_artist').css('display', 'none');
+      $('.nav_customer').css('display', 'none');
+      $('.nav_login').css('display', 'inline-block');
+      $('.nav_register').css('display', 'inline-block');
+      $('.nav_logout').css('display', 'none');
+      $('.nav_signInAs').css('display', 'none');
+    } else if (user === "customer") {
+      //After Login - Customer
+      $('.nav_artworks').css('display', 'inline-block');
+      $('.nav_artist').css('display', 'none');
+      $('.nav_customer').css('display', 'inline-block');
+      $('.nav_login').css('display', 'none');
+      $('.nav_register').css('display', 'none');
+      $('.nav_logout').css('display', 'inline-block');
+      $('.nav_signInAs').css('display', 'inline-block');
+    } else if (user === "artist") {
+      //After Login - Artist
+      $('.nav_artworks').css('display', 'none');
+      $('.nav_artist').css('display', 'inline-block');
+      $('.nav_customer').css('display', 'none');
+      $('.nav_login').css('display', 'none');
+      $('.nav_register').css('display', 'none');
+      $('.nav_logout').css('display', 'inline-block');
+      $('.nav_signInAs').css('display', 'inline-block');
+    }
   }
 
 });
