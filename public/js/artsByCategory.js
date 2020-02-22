@@ -2,45 +2,50 @@ $(document).ready(function () {
   var artsbycategoryForm = $("#artsbycategory");
   var categorySelect = $("#category");
   var arts_container = $(".arts_container");
-  var categoryName;
   var arts;
+  var categoryId;
+
   getCategories();
 
   function getCategories(){
-    $.get("/apis/category", renderAuthorList);
+    $.get("/apis/api/category", renderCategoryList);
   }
 
-  function renderAuthorList(data) {
+  function renderCategoryList(data) {
     var rowsToAdd = [];
     for (var i = 0; i < data.length; i++) {
-      rowsToAdd.push(createAuthorRow(data[i]));
+      rowsToAdd.push(createCategoryRow(data[i]));
     }
     categorySelect.empty();
     console.log(rowsToAdd);
     console.log(categorySelect);
     categorySelect.append(rowsToAdd);
-    categorySelect.val(id);
+    //categorySelect.val(0);
   }
 
-  // Creates the author options in the dropdown
-  function createAuthorRow(author) {
+  function createCategoryRow(category) {
     var listOption = $("<option>");
-    listOption.attr("value", author.id);
-    listOption.text(author.name);
+    listOption.attr("value", category.id);
+    listOption.text(category.name);
     return listOption;
   }
 
+  $("#category").change(function(e){
+    e.preventDefault();
+    categoryId = $(this).val();
+    console.log(categoryId);
+  });
 
-  $(artsbycategoryForm).on("submit", getArts());
+  $(artsbycategoryForm).on("submit", getArts);
 
-  function getArts() {
-    categoryName = categorySelect.  $("#category option:selected").text();
-    console.log(categoryName);
-    if (categoryName) {
-      categoryName = "/?category=" + categoryName;
+  function getArts(e){
+    e.preventDefault();
+    if (categoryId) {
+      categoryId = "/?categoryid=" + categoryId;
+    } else {
+      categoryId = "";
     }
-    $.get("/artsbycategory/api/artsbycategory", categoryName, function(data) {
-      console.log("Arts", data);
+    $.get("/apis/api/artsbycategory" + categoryId, function(data) {
       arts = data;
       if (!arts || !arts.length) {
         arts_container.empty();
@@ -80,6 +85,9 @@ $(document).ready(function () {
     newArtYear.text(art.year);
     newArtName.text(art.Artist.name);
     newArtCardHeading.append(newArtImage);
+    newArtCardBody.append(newArtTitle);
+    newArtCardBody.append(newArtYear);
+    newArtCardBody.append(newArtName);
     newArtCardBody.append(newArtBody);
     newArtCard.append(newArtCardHeading);
     newArtCard.append(newArtCardBody);
