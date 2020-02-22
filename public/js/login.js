@@ -3,8 +3,13 @@ $(document).ready(function () {
   var customer_loginForm = $("form.customer_login");
   var customer_email = $("input#customer_email");
   var customer_password = $("input#customer_password");
+  var nav_logout = $(".nav_logout");
 
-  sessionStorage.setItem("user", "");
+  var user = sessionStorage.getItem("user");
+  console.log("user : " + user);
+  if (user === null){
+    sessionStorage.setItem("user", "login");
+  }
   changeMenu();
 
   $.get("/apis/api/user_data").then(function (data) {
@@ -37,7 +42,6 @@ $(document).ready(function () {
       password: password
     }).then(function () {
       sessionStorage.setItem("user", "customer");
-      changeMenu();
       location.assign("/");
       
       // location.assign("/");
@@ -50,8 +54,8 @@ $(document).ready(function () {
   }
 
   function changeMenu() {
-    var user = sessionStorage.getItem("user");
-    if (user === "") {
+    user = sessionStorage.getItem("user");
+    if (user === "login") {
       //Before Login
       $('.nav_artworks').css('display', 'none');
       $('.nav_artist').css('display', 'none');
@@ -80,5 +84,16 @@ $(document).ready(function () {
       $('.nav_signInAs').css('display', 'inline-block');
     }
   }
+
+  // function logout(){
+  //   console.log("logout function worked...");
+  //   sessionStorage.setItem("user", "login");
+  //   changeMenu();
+  // }
+  nav_logout.on("click", function () {
+    console.log("logout function worked...");
+    sessionStorage.setItem("user", "login");
+  });
+
 
 });

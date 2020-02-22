@@ -34,8 +34,7 @@ $(document).ready(function() {
       password: password
     }).then(function() {
       sessionStorage.setItem("user", "artist");
-      changeMenu();
-      window.location.assign('/');
+      location.assign("/");
         // If there's an error, log the error
         //------------------------------------
       })
