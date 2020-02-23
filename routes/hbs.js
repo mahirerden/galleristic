@@ -65,6 +65,13 @@ router.get('/artsbycategory', (req, res) => {
   });
 });
 
+router.get('/artsbyartist', (req, res) => {
+  
+  res.render("artsbyartist", {
+    title1: "Arts By Artist"
+  });
+});
+
 /* GET login page. */
 router.get("/login", function(req, res, next) {
   // if (req.user) {

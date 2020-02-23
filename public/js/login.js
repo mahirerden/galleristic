@@ -85,15 +85,8 @@ $(document).ready(function () {
     }
   }
 
-  // function logout(){
-  //   console.log("logout function worked...");
-  //   sessionStorage.setItem("user", "login");
-  //   changeMenu();
-  // }
   nav_logout.on("click", function () {
-    console.log("logout function worked...");
     sessionStorage.setItem("user", "login");
   });
-
 
 });

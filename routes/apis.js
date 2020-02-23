@@ -24,6 +24,13 @@ router.get("/api/category", (req, res) => {
   });
 });
 
+router.get("/api/artist", (req, res) => {
+  db.Artist.findAll({
+  }).then(function(dbArtist) {
+    res.json(dbArtist);
+  });
+});
+
 router.get("/api/artsbycategory", (req, res) => {
   var query = {};
   if (req.query.categoryid) {
@@ -45,27 +52,48 @@ router.get("/api/artsbycategory", (req, res) => {
   });
 });
 
-router.get("/api/artsbycategory/:id", (req, res) => {
+router.get("/api/artsbyartist", (req, res) => {
   var query = {};
-  console.log(JSON.stringify(req.query));
-  if (req.query.id) {
-    query.id = req.query.id;
+  if (req.query.artistid) {
+    query.artistid = req.query.artistid;
   }
+  console.log('req.query = ' + JSON.stringify(req.query));
   db.Arts.findAll({
-    where: {
-      categoryid: req.params.id
-    },
+    where: query,
     include: [
-      {
-        model: db.Artist
-      },
-      {
-        model: db.Category
-      }
-  ]
+            {
+              model: db.Artist
+            },
+            {
+              model: db.Category
+            }
+        ]
   }).then(function(dbArts) {
     res.json(dbArts);
   });
 });
+
+// router.get("/api/artsbycategory/:id", (req, res) => {
+//   var query = {};
+//   console.log(JSON.stringify(req.query));
+//   if (req.query.id) {
+//     query.id = req.query.id;
+//   }
+//   db.Arts.findAll({
+//     where: {
+//       categoryid: req.params.id
+//     },
+//     include: [
+//       {
+//         model: db.Artist
+//       },
+//       {
+//         model: db.Category
+//       }
+//   ]
+//   }).then(function(dbArts) {
+//     res.json(dbArts);
+//   });
+// });
 
 module.exports = router;
