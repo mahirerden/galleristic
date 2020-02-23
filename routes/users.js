@@ -29,8 +29,7 @@ router.post('/artist_register', (req, res) => {
   db.Artist.create({
     name: req.body.name,
     email: req.body.email,
-    password: req.body.password,
-    islocal: 1
+    password: req.body.password
   })
     .then(function () {
       res.redirect("/login");
