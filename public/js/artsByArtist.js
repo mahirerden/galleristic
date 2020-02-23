@@ -18,7 +18,7 @@ $(document).ready(function () {
     }
     artist_select.empty();
     artist_select.append(rowsToAdd);
-    //artist_select.val(0);
+    artist_select.val(0);
   }
 
   function createArtistRow(artist) {
@@ -38,10 +38,10 @@ $(document).ready(function () {
 
   function getArts(e){
     e.preventDefault();
-    if (artistid) {
-      artistId = "/?artistid=" + artistid;
+    if (artistId) {
+      artistId = "/?artistid=" + artistId;
     } else {
-      artistid = "";
+      artistId = "";
     }
     $.get("/apis/api/artsbyartist" + artistId, function(data) {
       arts = data;
@@ -55,7 +55,6 @@ $(document).ready(function () {
    }
 
    function initializeRows() {
-    console.log("calistim");
     arts_container.empty();
     let artsToAdd = [];
     for (var i = 0; i < arts.length; i++) {
@@ -66,7 +65,6 @@ $(document).ready(function () {
 
   // This function constructs a post's HTML
   function createNewRow(art) {
-    console.log("art:" + JSON.stringify(art));
     var newArtCard = $("<div>");
     newArtCard.addClass("artCard");
     var newArtCardHeading = $("<div>");
@@ -76,17 +74,27 @@ $(document).ready(function () {
     var newArtCardBody = $("<div>");
     newArtCardBody.addClass("card-body");
     var newArtBody = $("<p>");
-    var newArtTitle = $("<h3>");
-    var newArtYear = $("<h4>");
-    var newArtName = $("<h4>");
-    newArtImage.attr("src", art.image)
-    newArtTitle.text(art.title);
-    newArtYear.text(art.year);
-    newArtName.text(art.Artist.name);
+    var newArtTitle = $("<h5>");    
+    var newArtYear = $("<h6>");
+    var newArtName = $("<h6>");
+    var newArtPrice = $("<h6>");
+    newArtImage.attr("src", art.file)
+    var title = "<b>Title: </b>" + art.title;
+    var year = "<b>Year: </b>" + art.year;
+    var artistName = "<b>Artist: </b>" + art.Artist.name;
+    var price = "<b>Price: </b>" + art.price;
+    var newCartButton = $('<button class="cartButton">Add Cart</button>');
+    newArtTitle.html(title);
+    newArtYear.html(year);
+    newArtName.html(artistName);
+    newArtPrice.html(price);
     newArtCardHeading.append(newArtImage);
     newArtCardBody.append(newArtTitle);
     newArtCardBody.append(newArtYear);
     newArtCardBody.append(newArtName);
+    newArtCardBody.append(newArtName);
+    newArtCardBody.append(newArtPrice);
+    newArtCardBody.append(newCartButton);
     newArtCardBody.append(newArtBody);
     newArtCard.append(newArtCardHeading);
     newArtCard.append(newArtCardBody);
