@@ -15,23 +15,23 @@
 
       <div class="form-group">
         <label for="title">Title</label>
-        <input type="text" class="form-control" id="title" aria-describedby="title" placeholder="Enter Art Title">
+        <input type="text" class="form-control" id="title" name="title" aria-describedby="title" placeholder="Enter Art Title">
       </div>
 
       <div class="form-group">
         <label for="price">Price</label>
-        <input type="text" class="form-control" id="price" aria-describedby="price" placeholder="Enter Art Price">
+        <input type="text" class="form-control" id="price" name="price" aria-describedby="price" placeholder="Enter Art Price">
       </div>
 
       <div class="form-group">
         <label for="year">Year</label>
-        <input type="text" class="form-control" id="year" aria-describedby="year" placeholder="Enter Year">
+        <input type="text" class="form-control" id="year" name="year" aria-describedby="year" placeholder="Enter Year">
       </div>
 
 
       <div class="form-group">
         <label for="catSelect">Category</label>
-        <select class="form-control" id="catSelect">
+        <select class="form-control" id="catSelect" name="categoryID">
           {{#each categories}}
           <option>{{this.dataValues.name}}</option>
           {{/each}}
@@ -40,7 +40,7 @@
       
       <div class="form-group">
         <label for="artistSelect">Artist</label>
-        <select class="form-control" id="artistSelect">
+        <select class="form-control" id="artistSelect" name="artistID">
           {{#each artists}}
           <option>{{this.dataValues.name}}</option>
           {{/each}}
@@ -49,7 +49,7 @@
 
       <div class="form-group">
         <label for="exampleTextarea">Comments</label>
-        <textarea class="form-control" id="exampleTextarea" rows="1"></textarea>
+        <textarea class="form-control" id="exampleTextarea" name="comment" rows="1"></textarea>
       </div>
 
       <div class="file-field input-field">

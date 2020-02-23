@@ -20,6 +20,16 @@ var db = require("./models");
 var app = express();
 app.use(helmet());
 
+// view engine setup
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'hbs');
+
+app.use(logger('dev'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'public')));
+
 // Multer section
 var storage = multer.diskStorage({
   destination: function(req, file, cb) {
@@ -58,11 +68,14 @@ function checkFileType(file, cb){
 createRecord = (req, res) => {
 var file = req.file;
 console.log(file);
+var body = req.body;
+console.log(body);
   db.Arts.create({
-    title: req.title,
-    price: req.price,
-    year: req.year,
-    file: req.file.path
+    title: req.body.title,
+    price: req.body.price,
+    year: req.body.year,
+    file: req.file.path,
+    comment: req.body.comment
   }).then(() => {
     res.render("artist", {
       msg: "File Uploaded!",
@@ -98,15 +111,7 @@ console.log(file);
 
 app.post("/artist", upload, createRecord);
 
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'hbs');
 
-app.use(logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(flash());
 app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true }));

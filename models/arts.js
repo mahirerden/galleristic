@@ -21,7 +21,11 @@ module.exports = function(sequelize, DataTypes) {
     file: {
       type: DataTypes.TEXT,
       len: [1]
-    }
+    },
+  comment: {
+  type: DataTypes.TEXT,
+  len: [1]
+  }
   });
 
   // Associate with Artist
