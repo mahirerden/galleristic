@@ -33,8 +33,8 @@ $(document).ready(function() {
       email: email,
       password: password
     }).then(function() {
-      console.log("then");
-      window.location.assign('/');
+      sessionStorage.setItem("user", "artist");
+      location.assign("/");
         // If there's an error, log the error
         //------------------------------------
       })
