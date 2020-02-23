@@ -70,13 +70,23 @@ var file = req.file;
 console.log(file);
 var body = req.body;
 console.log(body);
-  db.Arts.create({
-    title: req.body.title,
-    price: req.body.price,
-    year: req.body.year,
-    file: req.file.path,
-    comment: req.body.comment
-  }).then(() => {
+  db.Arts.create(
+    {
+      title: req.body.title,
+      price: req.body.price,
+      year: req.body.year,
+      file: req.file.path,
+      comment: req.body.comment,
+      categoryID: req.body.category,
+      artistID: req.body.artist
+    },
+    {
+      include: [db.Category]
+    },
+    {
+      include: [db.Artist]
+    }
+  ).then(() => {
     res.render("artist", {
       msg: "File Uploaded!",
       file: `uploads/${req.file.filename}`
