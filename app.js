@@ -54,30 +54,49 @@ function checkFileType(file, cb){
   }
 }
 
-/* PUT for File upload */
-app.post("/artist", (req, res) => {
-  upload(req, res, err => {
-    if (err) {
-      res.render("artist", {
-        msg: err
-      });
-    } else {
-      if (req.file == undefined) {
-        res.render("artist", {
-          msg: "Error: No File Selected!"
-        });
-      } else {
-        res.render("artist", {
-          msg: "File Uploaded!",
-          file: `uploads/${req.file.filename}`,
-          atitle: req.body.title,
-          aprice: req.body.price,
-        });
-      }
-    }
+// insert image function
+createRecord = (req, res) => {
+var file = req.file;
+console.log(file);
+  db.Arts.create({
+    title: req.title,
+    price: req.price,
+    year: req.year,
+    file: req.file.path
+  }).then(() => {
+    res.render("artist", {
+      msg: "File Uploaded!",
+      file: `uploads/${req.file.filename}`
+    });
   });
-});
+  };
 
+
+/* PUT for File upload */
+// app.post("/artist", (req, res) => {
+//   upload(req, res, err => {
+//     if (err) {
+//       res.render("artist", {
+//         msg: err
+//       });
+//     } else {
+//       if (req.file == undefined) {
+//         res.render("artist", {
+//           msg: "Error: No File Selected!"
+//         });
+//       } else {
+//         res.render("artist", {
+//           msg: "File Uploaded!",
+//           file: `uploads/${req.file.filename}`,
+//           atitle: req.body.title,
+//           aprice: req.body.price,
+//         });
+//       }
+//     }
+//   });
+// });
+
+app.post("/artist", upload, createRecord);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

@@ -28,12 +28,14 @@ router.get("/customer", isAuthenticated, (req, res) => {
 /* GET artist page. */
 router.get("/artist", isAuthenticated, (req, res) => {
   db.Category.findAll({ attributes: ["name"] }).then(function(dbCategory) {
+    db.Artist.findAll({ attributes: ["name"] }).then(function (artistName){
     res.render("artist", {
       title1: "Artist Submission Page",
-      categories: dbCategory
+      categories: dbCategory,
+      artists: artistName
     });
   });
-});
+})});
 
 /* GET arts page. */
 router.get("/arts", isAuthenticated, (req, res) => {
