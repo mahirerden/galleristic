@@ -1,5 +1,5 @@
 body {
-  padding: 50px;
+  margin: 20px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
@@ -17,3 +17,16 @@ a {
     z-index:999;
     border-radius: 1%;
 }
+
+.artCard{
+
+  margin: 10px;
+  border: solid 0.5px grey;
+  border-radius: 1%;
+}
+
+.artImage{
+  width: 100%;
+}
+
+

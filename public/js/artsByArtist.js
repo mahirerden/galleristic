@@ -1,51 +1,49 @@
 $(document).ready(function () {
-  var artsbycategoryForm = $("#artsbycategory");
-  var categorySelect = $("#category");
+  var artsbyartistForm = $("#artsbyartist");
+  var artist_select = $("#artist_select");
   var arts_container = $(".arts_container");
   var arts;
-  var categoryId;
+  var artistId;
 
-  getCategories();
+  getArtists();
 
-  function getCategories(){
-    $.get("/apis/api/category", renderCategoryList);
+  function getArtists(){
+    $.get("/apis/api/artist", renderArtistList);
   }
 
-  function renderCategoryList(data) {
+  function renderArtistList(data) {
     var rowsToAdd = [];
     for (var i = 0; i < data.length; i++) {
-      rowsToAdd.push(createCategoryRow(data[i]));
+      rowsToAdd.push(createArtistRow(data[i]));
     }
-    categorySelect.empty();
-    console.log(rowsToAdd);
-    console.log(categorySelect);
-    categorySelect.append(rowsToAdd);
-    categorySelect.val(0);
+    artist_select.empty();
+    artist_select.append(rowsToAdd);
+    artist_select.val(0);
   }
 
-  function createCategoryRow(category) {
+  function createArtistRow(artist) {
     var listOption = $("<option>");
-    listOption.attr("value", category.id);
-    listOption.text(category.name);
+    listOption.attr("value", artist.id);
+    listOption.text(artist.name);
     return listOption;
   }
 
-  $("#category").change(function(e){
+  $("#artist_select").change(function(e){
     e.preventDefault();
-    categoryId = $(this).val();
-    console.log(categoryId);
+    artistId = $(this).val();
+    console.log(artistId);
   });
 
-  $(artsbycategoryForm).on("submit", getArts);
+  $(artsbyartistForm).on("submit", getArts);
 
   function getArts(e){
     e.preventDefault();
-    if (categoryId) {
-      categoryId = "/?categoryid=" + categoryId;
+    if (artistId) {
+      artistId = "/?artistid=" + artistId;
     } else {
-      categoryId = "";
+      artistId = "";
     }
-    $.get("/apis/api/artsbycategory" + categoryId, function(data) {
+    $.get("/apis/api/artsbyartist" + artistId, function(data) {
       arts = data;
       if (!arts || !arts.length) {
         arts_container.empty();
@@ -58,7 +56,7 @@ $(document).ready(function () {
 
    function initializeRows() {
     arts_container.empty();
-    var artsToAdd = [];
+    let artsToAdd = [];
     for (var i = 0; i < arts.length; i++) {
       artsToAdd.push(createNewRow(arts[i]));
     }
