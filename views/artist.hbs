@@ -33,7 +33,7 @@
         <label for="catSelect">Category</label>
         <select class="form-control" id="catSelect" name="categoryID">
           {{#each categories}}
-          <option>{{this.dataValues.name}}</option>
+          <option>{{this.dataValues.id}} - {{this.dataValues.name}}</option>
           {{/each}}
         </select>
       </div>
@@ -42,7 +42,7 @@
         <label for="artistSelect">Artist</label>
         <select class="form-control" id="artistSelect" name="artistID">
           {{#each artists}}
-          <option>{{this.dataValues.name}}</option>
+          <option>{{this.dataValues.id}} - {{this.dataValues.name}}</option>
           {{/each}}
         </select>
       </div>
