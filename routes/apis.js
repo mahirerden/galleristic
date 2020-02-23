@@ -17,6 +17,19 @@ router.get("/api/user_data", function(req, res) {
   }
 });
 
+
+// POST route for saving a new art
+// router.post("/api/arts", function(req, res) {
+//   db.Arts.create({
+//     title: req.body.title,
+//     price: req.body.price,
+//     year: req.body.year,
+//     file: `uploads/${req.file.filename}`
+//   }).then(function(dbArt) {
+//     res.json(dbArt);
+//   });
+//   });
+
 router.get("/api/category", (req, res) => {
   db.Category.findAll({
   }).then(function(dbCategory) {
@@ -32,14 +45,7 @@ router.get("/api/artsbycategory", (req, res) => {
   console.log('req.query = ' + JSON.stringify(req.query));
   db.Arts.findAll({
     where: query,
-    include: [
-            {
-              model: db.Artist
-            },
-            {
-              model: db.Category
-            }
-        ]
+    include: [{model: db.Artist},{model: db.Category}]
   }).then(function(dbArts) {
     res.json(dbArts);
   });
