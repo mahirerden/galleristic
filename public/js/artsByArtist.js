@@ -31,7 +31,6 @@ $(document).ready(function () {
   $("#artist_select").change(function(e){
     e.preventDefault();
     artistId = $(this).val();
-    console.log(artistId);
   });
 
   $(artsbyartistForm).on("submit", getArts);
@@ -51,6 +50,8 @@ $(document).ready(function () {
       else {
         initializeRows();
       }
+      artist_select.val(0);
+      artistId = "";
     });
    }
 
