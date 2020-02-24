@@ -19,11 +19,11 @@ router.get("/about", (req, res) => {
 });
 
 /* GET customer page. */
-router.get("/customer", isAuthenticated, (req, res) => {
-  res.render("customer", {
-    title1: "Customer Page"
-  });
-});
+// router.get("/customer", isAuthenticated, (req, res) => {
+//   res.render("customer", {
+//     title1: "Customer Page"
+//   });
+// });
 
 /* GET artist page. */
 router.get("/artist", isAuthenticated, (req, res) => {
