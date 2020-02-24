@@ -11,7 +11,7 @@ Application can be invoked with the following code
 ```sh
 npm start
 ```
-####How application designed:
+#### How application designed:
 * Node and express server used
 * Application backed by Mysql and Sequelize
 * Get and Post routes used for retrieving and adding new data
@@ -46,7 +46,7 @@ Artists can define and upload their artworks with the following page
 #### Backend Design:
 ##### Database Name: Galleristic
 
-######Artist Table
+###### Artist Table
 ```sh
 var Artist = sequelize.define("Artist", {
     name: {
@@ -81,7 +81,7 @@ var Artist = sequelize.define("Artist", {
     });
   };
 ```
-######Arts Table
+###### Arts Table
 ```sh
   var Arts = sequelize.define("Arts", {
     title: {
@@ -135,7 +135,7 @@ var Artist = sequelize.define("Artist", {
     });
   };
 ```
-######Category Table
+###### Category Table
 ```sh
   var Category = sequelize.define("Category", {
     name: {
@@ -153,7 +153,7 @@ Category.associate = function(models) {
   Category.hasMany(models.Arts);
 };
 ```
-######Customer Table
+###### Customer Table
 ```sh
 var Customer = sequelize.define("Customer", {
     name: {
