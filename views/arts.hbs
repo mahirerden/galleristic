@@ -1,69 +1,18 @@
-
-
-<h3 class="text-center mt-3">{{title1}}</h3>
+{{!-- Galleristic Section --}}
+<h1 class="text-center mt-3">{{mainTitle}}</h1>
 <div class="row">
 
+  {{#each gallery}}
  <div class="col-md-4">
-  {{{abs01}}}
+  <img class="thumbnail shadow" src="{{{this.dataValues.file}}}" onclick='this.src="{{{this.dataValues.file}}}"'/>
+  <br>
+  <p1>Title: {{dataValues.title}}</p1>
+  <br>
+  <p1>Price: {{dataValues.price}}</p1>
+  <br>
+  <p1>Year: {{dataValues.year}}</p1>
+  <br>
  </div>
-
- <div class="col-md-4">
-  {{{abs02}}}
- </div>
-
- <div class="col-md-4">
-  {{{abs03}}}
- </div>
-
-</div>
-
-<h3 class="text-center mt-3">{{title2}}</h3>
-<div class="row">
-
- <div class="col-md-4">
-  {{{mdn01}}}
- </div>
-
- <div class="col-md-4">
-  {{{mdn02}}}
- </div>
-
- <div class="col-md-4">
-  {{{mdn03}}}
- </div>
-
-</div>
-
-<h3 class="text-center mt-3">{{title3}}</h3>
-<div class="row">
-
- <div class="col-md-4">
-  {{{str01}}}
- </div>
-
- <div class="col-md-4">
-  {{{str02}}}
- </div>
-
- <div class="col-md-4">
-  {{{str03}}}
- </div>
-
-</div>
-
-<h3 class="text-center mt-3">{{title4}}</h3>
-<div class="row">
-
- <div class="col-md-4">
-  {{{gla01}}}
- </div>
-
- <div class="col-md-4">
-  {{{gla02}}}
- </div>
-
- <div class="col-md-4">
-  {{{gla03}}}
- </div>
+  {{/each}}
 
 </div>

@@ -76,7 +76,7 @@ console.log(body);
         title: req.body.title,
         price: req.body.price,
         year: req.body.year,
-        file: req.file.path,
+        file: `uploads/${req.file.filename}`,
         comment: req.body.comment,
         ArtistId: artist.dataValues.id,
         CategoryId: result.dataValues.id
@@ -90,6 +90,8 @@ console.log(body);
   });
   };
 
+// Artist page route 
+app.post("/artist", upload, createRecord);
 
 /* PUT for File upload */
 // app.post("/artist", (req, res) => {
@@ -114,10 +116,6 @@ console.log(body);
 //     }
 //   });
 // });
-
-app.post("/artist", upload, createRecord);
-
-
 
 app.use(flash());
 app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true }));
