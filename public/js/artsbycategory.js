@@ -33,7 +33,6 @@ $(document).ready(function () {
   $("#category").change(function(e){
     e.preventDefault();
     categoryId = $(this).val();
-    console.log(categoryId);
   });
 
   $(artsbycategoryForm).on("submit", getArts);
@@ -53,6 +52,8 @@ $(document).ready(function () {
       else {
         initializeRows();
       }
+      categorySelect.val(0);
+      categoryId = "";
     });
    }
 
