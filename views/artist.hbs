@@ -31,18 +31,18 @@
 
       <div class="form-group">
         <label for="catSelect">Category</label>
-        <select class="form-control" id="catSelect" name="categoryID">
+        <select class="form-control" id="catSelect" name="category">
           {{#each categories}}
-          <option>{{this.dataValues.id}} - {{this.dataValues.name}}</option>
+          <option>{{this.dataValues.name}}</option>
           {{/each}}
         </select>
       </div>
       
       <div class="form-group">
         <label for="artistSelect">Artist</label>
-        <select class="form-control" id="artistSelect" name="artistID">
+        <select class="form-control" id="artistSelect" name="artist">
           {{#each artists}}
-          <option>{{this.dataValues.id}} - {{this.dataValues.name}}</option>
+          <option>{{this.dataValues.name}}</option>
           {{/each}}
         </select>
       </div>

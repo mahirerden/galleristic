@@ -27,15 +27,27 @@ router.get("/customer", isAuthenticated, (req, res) => {
 
 /* GET artist page. */
 router.get("/artist", isAuthenticated, (req, res) => {
-  db.Category.findAll({ attributes: ["id", "name"] }).then(function(dbCategory) {
-    db.Artist.findAll({ attributes: ["id", "name"] }).then(function (artistName){
-    res.render("artist", {
-      title1: "Artist Submission Page",
-      categories: dbCategory,
-      artists: artistName
+  db.Category.findAll(
+    { attributes: ["id", "name"] }
+    // ,
+    // {
+    //   include: [db.Arts]
+    // }
+  ).then(function(dbCategory) {
+    db.Artist.findAll(
+      { attributes: ["id", "name"] }
+      // ,
+      // {
+      //   include: [db.Arts]
+      // }
+    ).then(function(artistName) {
+      res.render("artist", {
+        title1: "Artist Submission Page",
+        categories: dbCategory,
+        artists: artistName
+      });
     });
-  });
-})});
+  });});
 
 /* GET arts page. */
 router.get("/arts", isAuthenticated, (req, res) => {

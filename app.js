@@ -70,27 +70,23 @@ var file = req.file;
 console.log(file);
 var body = req.body;
 console.log(body);
-  db.Arts.create(
-    {
-      title: req.body.title,
-      price: req.body.price,
-      year: req.body.year,
-      file: req.file.path,
-      comment: req.body.comment,
-      categoryID: req.body.category,
-      artistID: req.body.artist
-    },
-    {
-      include: [db.Category]
-    },
-    {
-      include: [db.Artist]
-    }
-  ).then(() => {
-    res.render("artist", {
-      msg: "File Uploaded!",
-      file: `uploads/${req.file.filename}`
-    });
+  db.Artist.findOne({ where: { name: req.body.artist } }).then(function(artist){
+    db.Category.findOne({where:{name:req.body.category}}).then(function(result){
+      db.Arts.create({
+        title: req.body.title,
+        price: req.body.price,
+        year: req.body.year,
+        file: req.file.path,
+        comment: req.body.comment,
+        ArtistId: artist.dataValues.id,
+        CategoryId: result.dataValues.id
+      }).then(() => {
+        res.render("artist", {
+          msg: "File Uploaded!",
+          file: `uploads/${req.file.filename}`
+        });
+      });
+    })
   });
   };
 
