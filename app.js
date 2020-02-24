@@ -122,17 +122,6 @@ app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true 
 app.use(passport.initialize());
 app.use(passport.session());
 
-//app.use('/', require('./routes/index.js'));
-//app.use("/customer", require('./routes/customer.js'));
-//app.use('/artist', require('./routes/artist.js'));
-//app.use('/arts', require('./routes/arts.js'));
-//app.use('/about', require('./routes/about.js'));
-//app.use('/login', require('./routes/login.js'));
-//app.use('/register', require('./routes/register.js'));
-//app.use('/logout', require('./routes/logout.js'));
-//app.use('/artist_register', require('./routes/artist_register.js'));
-//app.use('/artist_login', require('./routes/artist_login.js'));
-//app.use('/artsbycategory', require('./routes/artsbycategory.js'));
 app.use('/', require('./routes/hbs.js'));
 app.use('/users', require('./routes/users.js'));
 app.use('/apis', require('./routes/apis.js'));
