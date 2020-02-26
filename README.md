@@ -1,49 +1,42 @@
-# Galleristic
+#### Galleristic:
+Galleristic is a full stack web application which helps up and coming artists to sell their artwork directly to consumer. As well as allowing art lovers to explore and purchase artwork. This approach allows artists and consumers to build relationships that a Gallery typically would not allow.
 
-## Project 2
+#### User Story:
+Build a unique art marketplace for up and coming artists and art lovers who find it difficult to enter the art world because of high art gallery fees as well as inaccessibility. 
 
-This is a Node and Express server application where artists and art lovers meet. 
-
-Heroku hosting path is as below:
-https://morning-hollows-80184.herokuapp.com/
-
-Application can be invoked with the following code
-```sh
-npm start
-```
-#### How application designed:
-* Node and express server used
+#### Technologies Used:
+* Node and Express server used
 * Application backed by Mysql and Sequelize
 * Get and Post routes used for retrieving and adding new data
 * Application deployed using Heroku and Jawsdb
 * CSS framework and Bootstrap used for styling
 * Followed MVC paradigm
-* Used Handlebars as frontend
+* Used Handlebars as HTML Template engine
 * Used additional npm packages : express-session, passport, multer, helmet, bcryptjs, mysql2 and cookie-parser
 
-#### Frontend Design:
-
-![Alt Text](./public/images/screen1.png)
-
-Customer and Artists can login seperately. 
+#### Application Workflow:
+* Customer and Artists can login seperately. 
 application menu items are shown or hidden according to user type
-![Alt Text](./public/images/screen2.png)
 
-Customer and Artists can be registered seperately.
-![Alt Text](./public/images/screen3.png)
+* Customer and Artists can be registered seperately.
 
-Customer can filter artworks by category or artists
-![Alt Text](./public/images/screen4.png)
+* Customer can filter artworks by category or artists
 
-![Alt Text](./public/images/screen7.png)
+* Customer can see recorded artworks
 
-Customer can see recorded artworks
-![Alt Text](./public/images/screen5.png)
+* Artists can define and upload their artworks with the following page
 
-Artists can define and upload their artworks with the following page
-![Alt Text](./public/images/screen6.png)
+Application can be invoked with the following code
+```sh
+npm start
+```
+
+#### Application Demo
+
+![Demo](./public/images/appdemo.gif)
 
 #### Backend Design:
+
 ##### Database Name: Galleristic
 
 ###### Artist Table
@@ -184,3 +177,16 @@ Customer.associate = function(models) {
   Customer.hasMany(models.Arts);
 };
 ```
+#### Authors:
+
+* Mahir Erdin
+* Neal Bhatt
+* Jawad Syed
+
+#### Application Links
+
+```
+Heroku : https://morning-hollows-80184.herokuapp.com/
+Github : https://github.com/sjahmed1445/galleristic/
+```
+
